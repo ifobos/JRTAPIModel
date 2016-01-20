@@ -21,7 +21,7 @@
 //This is an Alpha Version, Updating for AFNetworking 3.0.4
 
 #import <JSONModel/JSONModel.h>
-#import <AFHTTPSessionManager.h>
+#import <AFNetworking/AFNetworking.h>
 
 #pragma mark - Constants
 extern NSString * const kAPI_URL;
