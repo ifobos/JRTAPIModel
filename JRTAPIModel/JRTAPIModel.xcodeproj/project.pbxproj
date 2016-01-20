@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		310893951C4EF078005546F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893941C4EF078005546F7 /* main.m */; };
+		310893981C4EF078005546F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893971C4EF078005546F7 /* AppDelegate.m */; };
+		3108939A1C4EF078005546F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 310893991C4EF078005546F7 /* Assets.xcassets */; };
+		3108939D1C4EF078005546F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3108939B1C4EF078005546F7 /* LaunchScreen.storyboard */; };
+		310893A71C4EF285005546F7 /* JRTAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893A61C4EF285005546F7 /* JRTAPIModel.m */; };
+		310893AB1C4EF538005546F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893A91C4EF538005546F7 /* ViewController.m */; };
+		310893AC1C4EF538005546F7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 310893AA1C4EF538005546F7 /* ViewController.xib */; };
+		310893AF1C4EF607005546F7 /* DemoAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893AE1C4EF607005546F7 /* DemoAPIModel.m */; };
+		310893B21C4EF9EE005546F7 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893B11C4EF9EE005546F7 /* PostModel.m */; };
+		ED40A8E7E5E514E5D6F91E8C /* libPods-JRTAPIModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62CC36520732BFCDF337F8AD /* libPods-JRTAPIModel.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		310893901C4EF078005546F7 /* JRTAPIModel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRTAPIModel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		310893941C4EF078005546F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		310893961C4EF078005546F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		310893971C4EF078005546F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		310893991C4EF078005546F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3108939C1C4EF078005546F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3108939E1C4EF078005546F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		310893A51C4EF285005546F7 /* JRTAPIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRTAPIModel.h; sourceTree = "<group>"; };
+		310893A61C4EF285005546F7 /* JRTAPIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRTAPIModel.m; sourceTree = "<group>"; };
+		310893A81C4EF538005546F7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		310893A91C4EF538005546F7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		310893AA1C4EF538005546F7 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		310893AD1C4EF607005546F7 /* DemoAPIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAPIModel.h; sourceTree = "<group>"; };
+		310893AE1C4EF607005546F7 /* DemoAPIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAPIModel.m; sourceTree = "<group>"; };
+		310893B01C4EF9EE005546F7 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
+		310893B11C4EF9EE005546F7 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
+		62CC36520732BFCDF337F8AD /* libPods-JRTAPIModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JRTAPIModel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9935A8A47EAE1A677BE64F97 /* Pods-JRTAPIModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTAPIModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel.release.xcconfig"; sourceTree = "<group>"; };
+		ECBE9FEEDFDEA2743EBB4362 /* Pods-JRTAPIModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTAPIModel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3108938D1C4EF078005546F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED40A8E7E5E514E5D6F91E8C /* libPods-JRTAPIModel.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DDFD0AC6EF1BDA65FF08A52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62CC36520732BFCDF337F8AD /* libPods-JRTAPIModel.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		310893871C4EF078005546F7 = {
+			isa = PBXGroup;
+			children = (
+				310893921C4EF078005546F7 /* JRTAPIModel */,
+				310893911C4EF078005546F7 /* Products */,
+				C270878A7213523A8DB26924 /* Pods */,
+				2DDFD0AC6EF1BDA65FF08A52 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		310893911C4EF078005546F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				310893901C4EF078005546F7 /* JRTAPIModel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		310893921C4EF078005546F7 /* JRTAPIModel */ = {
+			isa = PBXGroup;
+			children = (
+				310893A41C4EF285005546F7 /* PodFiles */,
+				310893AD1C4EF607005546F7 /* DemoAPIModel.h */,
+				310893AE1C4EF607005546F7 /* DemoAPIModel.m */,
+				310893B01C4EF9EE005546F7 /* PostModel.h */,
+				310893B11C4EF9EE005546F7 /* PostModel.m */,
+				310893A81C4EF538005546F7 /* ViewController.h */,
+				310893A91C4EF538005546F7 /* ViewController.m */,
+				310893AA1C4EF538005546F7 /* ViewController.xib */,
+				310893961C4EF078005546F7 /* AppDelegate.h */,
+				310893971C4EF078005546F7 /* AppDelegate.m */,
+				310893991C4EF078005546F7 /* Assets.xcassets */,
+				3108939B1C4EF078005546F7 /* LaunchScreen.storyboard */,
+				3108939E1C4EF078005546F7 /* Info.plist */,
+				310893931C4EF078005546F7 /* Supporting Files */,
+			);
+			path = JRTAPIModel;
+			sourceTree = "<group>";
+		};
+		310893931C4EF078005546F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				310893941C4EF078005546F7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		310893A41C4EF285005546F7 /* PodFiles */ = {
+			isa = PBXGroup;
+			children = (
+				310893A51C4EF285005546F7 /* JRTAPIModel.h */,
+				310893A61C4EF285005546F7 /* JRTAPIModel.m */,
+			);
+			path = PodFiles;
+			sourceTree = "<group>";
+		};
+		C270878A7213523A8DB26924 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECBE9FEEDFDEA2743EBB4362 /* Pods-JRTAPIModel.debug.xcconfig */,
+				9935A8A47EAE1A677BE64F97 /* Pods-JRTAPIModel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3108938F1C4EF078005546F7 /* JRTAPIModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 310893A11C4EF078005546F7 /* Build configuration list for PBXNativeTarget "JRTAPIModel" */;
+			buildPhases = (
+				DEA4837A72E23374B2073E2F /* Check Pods Manifest.lock */,
+				3108938C1C4EF078005546F7 /* Sources */,
+				3108938D1C4EF078005546F7 /* Frameworks */,
+				3108938E1C4EF078005546F7 /* Resources */,
+				9396978EA7321879241EC0BD /* Embed Pods Frameworks */,
+				7F6226DC6B101B816C7ED35B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JRTAPIModel;
+			productName = JRTAPIModel;
+			productReference = 310893901C4EF078005546F7 /* JRTAPIModel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		310893881C4EF078005546F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = jerti;
+				TargetAttributes = {
+					3108938F1C4EF078005546F7 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 3108938B1C4EF078005546F7 /* Build configuration list for PBXProject "JRTAPIModel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 310893871C4EF078005546F7;
+			productRefGroup = 310893911C4EF078005546F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3108938F1C4EF078005546F7 /* JRTAPIModel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3108938E1C4EF078005546F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3108939A1C4EF078005546F7 /* Assets.xcassets in Resources */,
+				310893AC1C4EF538005546F7 /* ViewController.xib in Resources */,
+				3108939D1C4EF078005546F7 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F6226DC6B101B816C7ED35B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9396978EA7321879241EC0BD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEA4837A72E23374B2073E2F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3108938C1C4EF078005546F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				310893A71C4EF285005546F7 /* JRTAPIModel.m in Sources */,
+				310893981C4EF078005546F7 /* AppDelegate.m in Sources */,
+				310893AB1C4EF538005546F7 /* ViewController.m in Sources */,
+				310893AF1C4EF607005546F7 /* DemoAPIModel.m in Sources */,
+				310893951C4EF078005546F7 /* main.m in Sources */,
+				310893B21C4EF9EE005546F7 /* PostModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3108939B1C4EF078005546F7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3108939C1C4EF078005546F7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3108939F1C4EF078005546F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		310893A01C4EF078005546F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		310893A21C4EF078005546F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECBE9FEEDFDEA2743EBB4362 /* Pods-JRTAPIModel.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JRTAPIModel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerti.JRTAPIModel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		310893A31C4EF078005546F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9935A8A47EAE1A677BE64F97 /* Pods-JRTAPIModel.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JRTAPIModel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerti.JRTAPIModel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3108938B1C4EF078005546F7 /* Build configuration list for PBXProject "JRTAPIModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3108939F1C4EF078005546F7 /* Debug */,
+				310893A01C4EF078005546F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		310893A11C4EF078005546F7 /* Build configuration list for PBXNativeTarget "JRTAPIModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				310893A21C4EF078005546F7 /* Debug */,
+				310893A31C4EF078005546F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 310893881C4EF078005546F7 /* Project object */;
+}
