@@ -44,6 +44,16 @@ typedef enum
 
 @property (nonatomic, readonly) NSString *API_URL;
 
++ (void)startReachabilityMonitoring;
+
++ (void)reachabilityStatusWithReachable:(void (^)())reachable
+                           notReachable:(void (^)())notReachable;
+
++ (void)reachabilityStatusWithNotReachable:(void (^)())notReachable
+                          reachableViaWiFi:(void (^)())reachableViaWiFi
+                          reachableViaWWAN:(void (^)())reachableViaWWAN;
+
+
 - (void)headerWithSuccess:(void (^)(NSArray *headers))successHeader
                   failure:(void (^)(NSError *error))failure;
 

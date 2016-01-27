@@ -12,6 +12,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *serverStatusLabel;
 @property (nonatomic, strong)PostModel *model;
 @end
 
@@ -127,6 +128,18 @@
          self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
          [self.activityIndicator stopAnimating];
      }];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [JRTAPIModel reachabilityStatusWithNotReachable:^{
+        self.serverStatusLabel.text     = @"Disconected";
+    } reachableViaWiFi:^{
+        self.serverStatusLabel.text     = @"WiFi Connected";
+    } reachableViaWWAN:^{
+        self. serverStatusLabel.text    = @"WMAN Connected";
+    }];
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+
+#import "JRTAPIModel.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,6 +22,8 @@
     self.window                     = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController  = [ViewController new];
     [self.window makeKeyAndVisible];
+    
+    [JRTAPIModel startReachabilityMonitoring];
     return YES;
 }
 

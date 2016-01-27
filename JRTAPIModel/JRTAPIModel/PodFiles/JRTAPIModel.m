@@ -74,6 +74,7 @@
 }
 
 - (void)catchFailureOperation:(NSURLSessionTask *)operation
+                        error:(NSError *)error
                   requestType:(JRTRequestType)requestType
                          path:(NSString *)path
                        params:(NSDictionary *)params
@@ -108,6 +109,48 @@
 //
 //    ######################################################################################
   
+}
+
+#pragma mark - Reachability
+
++ (void)startReachabilityMonitoring
+{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+
++ (void)reachabilityStatusWithReachable:(void (^)())reachable
+                           notReachable:(void (^)())notReachable
+{
+    return [self reachabilityStatusWithNotReachable:notReachable
+                                   reachableViaWiFi:reachable
+                                   reachableViaWWAN:reachable];
+}
+
++ (void)reachabilityStatusWithNotReachable:(void (^)())notReachable
+                          reachableViaWiFi:(void (^)())reachableViaWiFi
+                          reachableViaWWAN:(void (^)())reachableViaWWAN
+{
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
+    {
+        switch (status)
+        {
+            case AFNetworkReachabilityStatusNotReachable:
+                notReachable();
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                reachableViaWiFi();
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                reachableViaWWAN();
+                break;
+            default:
+                NSLog(@"Unkown network status");
+            break;
+        }
+    }];
+    if (![AFNetworkReachabilityManager sharedManager].isReachable) notReachable();
+    if ([AFNetworkReachabilityManager sharedManager].reachableViaWiFi) reachableViaWiFi();
+    if ([AFNetworkReachabilityManager sharedManager].reachableViaWWAN) reachableViaWWAN();
 }
 
 #pragma mark - Getters
@@ -221,12 +264,12 @@
                                 {
                                     NSLog(@"Error on [GET]: %@", error);
                                     [self catchFailureOperation:task
+                                                          error:error
                                                     requestType:JRTRequestTypeGet
                                                            path:path
                                                          params:params
                                                         success:success
                                                         failure:failure];
-
                                 }];
                             }
                     failure:^(NSError *error)
@@ -262,6 +305,7 @@
                                 {
                                     NSLog(@"Error on [POST]: %@", error);
                                     [self catchFailureOperation:task
+                                                          error:error
                                                     requestType:JRTRequestTypePost
                                                            path:path
                                                          params:params
@@ -306,6 +350,7 @@
                                     NSLog(@"Error on [POST]: %@", error);
                                     NSLog(@"JSON Error on [POST]: %@", task.response);
                                     [self catchFailureOperation:task
+                                                          error:error
                                                     requestType:JRTRequestTypePostJson
                                                            path:path
                                                          params:params
@@ -344,6 +389,7 @@
                                 {
                                     NSLog(@"Error on [GET]: %@", error);
                                     [self catchFailureOperation:task
+                                                          error:error
                                                     requestType:JRTRequestTypePut
                                                            path:path
                                                          params:params
@@ -385,6 +431,7 @@
                                     NSLog(@"Error on [PUT]: %@", error);
                                     NSLog(@"JSON Error on [PUT]: %@", task.response);
                                     [self catchFailureOperation:task
+                                                          error:error
                                                     requestType:JRTRequestTypePutJson
                                                            path:path
                                                          params:params
@@ -423,6 +470,7 @@
                                 {
                                     NSLog(@"Error on [Delete]: %@", error);
                                     [self catchFailureOperation:task
+                                                          error:error
                                                     requestType:JRTRequestTypeDelete
                                                            path:path
                                                          params:params

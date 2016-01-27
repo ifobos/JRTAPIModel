@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="activityIndicator" destination="6hG-i1-b3e" id="Y17-JP-uzl"/>
+                <outlet property="serverStatusLabel" destination="JBC-wL-4ZM" id="Epk-Ov-Pqq"/>
                 <outlet property="textView" destination="1NI-mT-vZd" id="adS-uk-TIu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1NI-mT-vZd">
-                    <rect key="frame" x="20" y="96" width="560" height="484"/>
+                    <rect key="frame" x="20" y="96" width="560" height="464"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -40,18 +41,34 @@
                         <action selector="requestAction:" destination="-1" eventType="valueChanged" id="WV3-pm-g8j"/>
                     </connections>
                 </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBC-wL-4ZM">
+                    <rect key="frame" x="567" y="574" width="13" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server Status:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfR-gv-9b9">
+                    <rect key="frame" x="473" y="576" width="86" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="1NI-mT-vZd" secondAttribute="trailing" constant="20" symbolic="YES" id="7tA-WO-YHt"/>
+                <constraint firstAttribute="bottom" secondItem="bfR-gv-9b9" secondAttribute="bottom" constant="8" id="DNb-cC-7px"/>
                 <constraint firstItem="Nb1-kL-3A3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="DgE-zb-7KD"/>
+                <constraint firstItem="JBC-wL-4ZM" firstAttribute="leading" secondItem="bfR-gv-9b9" secondAttribute="trailing" constant="8" symbolic="YES" id="FcN-2X-T6C"/>
                 <constraint firstAttribute="trailing" secondItem="Nb1-kL-3A3" secondAttribute="trailing" constant="20" symbolic="YES" id="G2O-At-uvY"/>
                 <constraint firstItem="6hG-i1-b3e" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P3H-Bv-kHP"/>
                 <constraint firstItem="Nb1-kL-3A3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="VwM-Sb-72e"/>
                 <constraint firstItem="6hG-i1-b3e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" symbolic="YES" id="X2K-xY-oF7"/>
-                <constraint firstAttribute="bottom" secondItem="1NI-mT-vZd" secondAttribute="bottom" constant="20" symbolic="YES" id="j2b-Ds-HLu"/>
+                <constraint firstAttribute="trailing" secondItem="JBC-wL-4ZM" secondAttribute="trailing" constant="20" symbolic="YES" id="ccS-u4-KqF"/>
+                <constraint firstAttribute="bottom" secondItem="1NI-mT-vZd" secondAttribute="bottom" constant="40" id="j2b-Ds-HLu"/>
                 <constraint firstItem="1NI-mT-vZd" firstAttribute="top" secondItem="Nb1-kL-3A3" secondAttribute="bottom" constant="8" symbolic="YES" id="qxH-Wa-XgT"/>
                 <constraint firstItem="1NI-mT-vZd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="rrb-5p-hlJ"/>
+                <constraint firstAttribute="bottom" secondItem="JBC-wL-4ZM" secondAttribute="bottom" constant="8" id="zD4-sS-36g"/>
             </constraints>
             <point key="canvasLocation" x="483" y="194"/>
         </view>
