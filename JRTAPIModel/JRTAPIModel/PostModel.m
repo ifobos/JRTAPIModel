@@ -10,102 +10,74 @@
 
 @implementation PostModel
 
-+ (JSONKeyMapper*)keyMapper
-{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"id": @"Id",
-                                                       }];
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithDictionary:@{ @"id": @"uid" }];
 }
 
-
 - (void)GETpostsSuccess:(JRTObjectBlok)success
-                failure:(JRTErrorBlock)failure
-{
-    [self getPath:@"posts"
-           params:@{}
-          success:^(id data)
-    {
+                failure:(JRTErrorBlock)failure {
+    [self getJsonPath:@"posts"
+               params:@{}
+              success:^(id data) {
         NSError *error;
         NSArray *result = [PostModel arrayOfModelsFromDictionaries:data error:&error];
         success(result);
     }
-          failure:^(NSError *error)
-    {
+              failure:^(NSError *error) {
         failure(error);
     }];
 }
 
 - (void)GETpostOneSuccess:(JRTObjectBlok)success
-                  failure:(JRTErrorBlock)failure
-{
-    [self getPath:@"posts/1"
-           params:@{}
-          success:^(id data)
-     {
-         NSError *error;
-         PostModel *result = [[PostModel alloc] initWithDictionary:data error:&error];
-         success(result);
-     }
-          failure:^(NSError *error)
-     {
-         failure(error);
-     }];
-}
-
-- (void)POSTpostSuccess:(JRTObjectBlok)success
-                failure:(JRTErrorBlock)failure
-{
-    [self postJsonForPath:@"posts"
-                   params:@{
-                            @"title"    : @"foo",
-                            @"body"     : @"bar",
-                            @"userId"   : @1
-                            }
-                  success:^(id data)
-    {
+                  failure:(JRTErrorBlock)failure {
+    [self getJsonPath:@"posts/1"
+               params:@{}
+              success:^(id data) {
         NSError *error;
         PostModel *result = [[PostModel alloc] initWithDictionary:data error:&error];
         success(result);
     }
-                  failure:^(NSError *error)
-    {
+              failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)POSTpostSuccess:(JRTObjectBlok)success
+                failure:(JRTErrorBlock)failure {
+    [self postJsonForPath:@"posts"
+                   params:@{ @"title": @"foo", @"body": @"bar", @"userId": @1 }
+                  success:^(id data) {
+        NSError *error;
+        PostModel *result = [[PostModel alloc] initWithDictionary:data error:&error];
+        success(result);
+    }
+                  failure:^(NSError *error) {
         failure(error);
     }];
 }
 
 - (void)PUTpostOneSuccess:(JRTObjectBlok)success
-                  failure:(JRTErrorBlock)failure
-{
+                  failure:(JRTErrorBlock)failure {
     [self putJsonForPath:@"posts/1"
-                  params:@{
-                           @"id"    : @1,
-                           @"title" : @"foo",
-                           @"body"  : @"bar",
-                           @"userId": @1
-                           }
-                 success:^(id data)
-    {
+                  params:@{ @"id": @1, @"title": @"foo", @"body": @"bar", @"userId": @1 }
+                 success:^(id data) {
         NSError *error;
         PostModel *result = [[PostModel alloc] initWithDictionary:data error:&error];
         success(result);
     }
-                 failure:^(NSError *error)
-    {
+                 failure:^(NSError *error) {
         failure(error);
     }];
 }
 
 - (void)DELETEpostOneSuccess:(JRTObjectBlok)success
-                     failure:(JRTErrorBlock)failure
-{
-    [self deletePath:@"posts/1"
-              params:@{}
-             success:^(id data)
-    {
+                     failure:(JRTErrorBlock)failure {
+    [self deleteJsonPath:@"posts/1"
+                  params:@{}
+                 success:^(id data) {
         success(data);
     }
-             failure:^(NSError *error)
-    {
+                 failure:^(NSError *error) {
         failure(error);
     }];
 }

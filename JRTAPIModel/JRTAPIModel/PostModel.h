@@ -9,7 +9,7 @@
 #import "DemoAPIModel.h"
 
 @interface PostModel : DemoAPIModel
-@property (nonatomic) NSInteger Id;
+@property (nonatomic) NSInteger uid;
 @property (nonatomic) NSInteger userId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *body;
@@ -17,17 +17,17 @@
 
 - (void)GETpostsSuccess:(JRTObjectBlok)success
                 failure:(JRTErrorBlock)failure;
-
+                
 - (void)GETpostOneSuccess:(JRTObjectBlok)success
                   failure:(JRTErrorBlock)failure;
-
+                  
 - (void)POSTpostSuccess:(JRTObjectBlok)success
                 failure:(JRTErrorBlock)failure;
-
+                
 - (void)PUTpostOneSuccess:(JRTObjectBlok)success
                   failure:(JRTErrorBlock)failure;
-
+                  
 - (void)DELETEpostOneSuccess:(JRTObjectBlok)success
                      failure:(JRTErrorBlock)failure;
-
+                     
 @end

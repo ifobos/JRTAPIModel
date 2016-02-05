@@ -13,24 +13,20 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *serverStatusLabel;
-@property (nonatomic, strong)PostModel *model;
+@property (nonatomic, strong) PostModel *model;
 @end
 
 @implementation ViewController
 
-- (PostModel *)model
-{
-    if (!_model)
-    {
-        _model =  [PostModel new];
+- (PostModel *)model {
+    if (!_model) {
+        _model = [PostModel new];
     }
     return _model;
 }
 
-- (IBAction)requestAction:(UISegmentedControl *)sender
-{
-    switch (sender.selectedSegmentIndex)
-    {
+- (IBAction)requestAction:(UISegmentedControl *)sender {
+    switch (sender.selectedSegmentIndex) {
         case 0:
             [self list];
             break;
@@ -49,96 +45,76 @@
         default:
             break;
     }
-    
-    
 }
 
-- (void)list
-{
+- (void)list {
     [self.activityIndicator startAnimating];
-    [self.model GETpostsSuccess:^(id data)
-    {
-        self.textView.text = [NSString stringWithFormat:@"Data: %@",data];
+    [self.model GETpostsSuccess:^(id data) {
+        self.textView.text = [NSString stringWithFormat:@"Data: %@", data];
         [self.activityIndicator stopAnimating];
     }
-                        failure:^(NSError *error)
-    {
+                        failure:^(NSError *error) {
         self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
         [self.activityIndicator stopAnimating];
     }];
 }
 
-- (void)create
-{
+- (void)create {
     [self.activityIndicator startAnimating];
-    [self.model POSTpostSuccess:^(id data)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Data: %@",data];
-         [self.activityIndicator stopAnimating];
-     }
-                        failure:^(NSError *error)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
-         [self.activityIndicator stopAnimating];
-     }];
-
+    [self.model POSTpostSuccess:^(id data) {
+        self.textView.text = [NSString stringWithFormat:@"Data: %@", data];
+        [self.activityIndicator stopAnimating];
+    }
+                        failure:^(NSError *error) {
+        self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
+        [self.activityIndicator stopAnimating];
+    }];
 }
 
-- (void)read
-{
+- (void)read {
     [self.activityIndicator startAnimating];
-    [self.model GETpostOneSuccess:^(id data)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Data: %@",data];
-         [self.activityIndicator stopAnimating];
-     }
-                        failure:^(NSError *error)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
-         [self.activityIndicator stopAnimating];
-     }];
-
+    [self.model GETpostOneSuccess:^(id data) {
+        self.textView.text = [NSString stringWithFormat:@"Data: %@", data];
+        [self.activityIndicator stopAnimating];
+    }
+                          failure:^(NSError *error) {
+        self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
+        [self.activityIndicator stopAnimating];
+    }];
 }
 
-- (void)update
-{
+- (void)update {
     [self.activityIndicator startAnimating];
-    [self.model PUTpostOneSuccess:^(id data)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Data: %@",data];
-         [self.activityIndicator stopAnimating];
-     }
-                        failure:^(NSError *error)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
-         [self.activityIndicator stopAnimating];
-     }];
+    [self.model PUTpostOneSuccess:^(id data) {
+        self.textView.text = [NSString stringWithFormat:@"Data: %@", data];
+        [self.activityIndicator stopAnimating];
+    }
+                          failure:^(NSError *error) {
+        self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
+        [self.activityIndicator stopAnimating];
+    }];
 }
 
-- (void)delete
-{
+- (void)delete {
     [self.activityIndicator startAnimating];
-    [self.model DELETEpostOneSuccess:^(id data)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Data: %@",data];
-         [self.activityIndicator stopAnimating];
-     }
-                        failure:^(NSError *error)
-     {
-         self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
-         [self.activityIndicator stopAnimating];
-     }];
+    [self.model DELETEpostOneSuccess:^(id data) {
+        self.textView.text = [NSString stringWithFormat:@"Data: %@", data];
+        [self.activityIndicator stopAnimating];
+    }
+                             failure:^(NSError *error) {
+        self.textView.text = [NSString stringWithFormat:@"Error: %@", error];
+        [self.activityIndicator stopAnimating];
+    }];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [JRTAPIModel reachabilityStatusWithNotReachable:^{
-        self.serverStatusLabel.text     = @"Disconected";
+        self.serverStatusLabel.text = @"Disconected";
     } reachableViaWiFi:^{
-        self.serverStatusLabel.text     = @"WiFi Connected";
+        self.serverStatusLabel.text = @"WiFi Connected";
     } reachableViaWWAN:^{
-        self. serverStatusLabel.text    = @"WMAN Connected";
+        self.serverStatusLabel.text = @"WMAN Connected";
     }];
 }
 
