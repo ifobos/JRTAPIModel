@@ -23,6 +23,7 @@
 @interface JRTAPIModel ()
 
 @property (nonatomic, strong) AFHTTPSessionManager<Ignore> *manager;
+@property (nonatomic, readonly) NSString *API_URL;
 
 @end
 
