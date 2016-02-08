@@ -64,10 +64,10 @@
 		310893871C4EF078005546F7 = {
 			isa = PBXGroup;
 			children = (
-				310893921C4EF078005546F7 /* JRTAPIModel */,
-				310893911C4EF078005546F7 /* Products */,
-				C270878A7213523A8DB26924 /* Pods */,
 				2DDFD0AC6EF1BDA65FF08A52 /* Frameworks */,
+				310893921C4EF078005546F7 /* JRTAPIModel */,
+				C270878A7213523A8DB26924 /* Pods */,
+				310893911C4EF078005546F7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,19 +83,19 @@
 			isa = PBXGroup;
 			children = (
 				310893A41C4EF285005546F7 /* PodFiles */,
+				310893931C4EF078005546F7 /* Supporting Files */,
+				310893961C4EF078005546F7 /* AppDelegate.h */,
+				310893971C4EF078005546F7 /* AppDelegate.m */,
+				310893991C4EF078005546F7 /* Assets.xcassets */,
 				310893AD1C4EF607005546F7 /* DemoAPIModel.h */,
 				310893AE1C4EF607005546F7 /* DemoAPIModel.m */,
+				3108939E1C4EF078005546F7 /* Info.plist */,
+				3108939B1C4EF078005546F7 /* LaunchScreen.storyboard */,
 				310893B01C4EF9EE005546F7 /* PostModel.h */,
 				310893B11C4EF9EE005546F7 /* PostModel.m */,
 				310893A81C4EF538005546F7 /* ViewController.h */,
 				310893A91C4EF538005546F7 /* ViewController.m */,
 				310893AA1C4EF538005546F7 /* ViewController.xib */,
-				310893961C4EF078005546F7 /* AppDelegate.h */,
-				310893971C4EF078005546F7 /* AppDelegate.m */,
-				310893991C4EF078005546F7 /* Assets.xcassets */,
-				3108939B1C4EF078005546F7 /* LaunchScreen.storyboard */,
-				3108939E1C4EF078005546F7 /* Info.plist */,
-				310893931C4EF078005546F7 /* Supporting Files */,
 			);
 			path = JRTAPIModel;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 			children = (
 				310893941C4EF078005546F7 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		310893A41C4EF285005546F7 /* PodFiles */ = {
@@ -265,6 +265,7 @@
 				3108939C1C4EF078005546F7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
