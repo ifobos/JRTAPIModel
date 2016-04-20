@@ -10,6 +10,13 @@
 
 @implementation DemoAPIModel
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.configurationDelegate = self;
+    }
+    return self;
+}
+
 #pragma mark - Implement
 
 
@@ -22,13 +29,13 @@
     return @"http://jsonplaceholder.typicode.com";
 }
 
-- (void)  catchError:(NSError *)error
-    requestOperation:(NSURLSessionTask *)operation
-         requestType:(JRTRequestType)requestType
-                path:(NSString *)path
-              params:(NSDictionary *)params
-             success:(JRTObjectBlok)success
-             failure:(JRTErrorBlock)failure {
+- (void)catchFailureOperation:(NSURLSessionTask *)operation
+                        error:(NSError *)error
+                  requestType:(JRTAPIModelRequestType)requestType
+                         path:(NSString *)path
+                       params:(NSDictionary *)params
+                      success:(JRTObjectBlok)success
+                      failure:(JRTErrorBlock)failure {
     failure(error);
 }
 

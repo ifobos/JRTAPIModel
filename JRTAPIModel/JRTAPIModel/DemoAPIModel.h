@@ -8,6 +8,6 @@
 
 #import "JRTAPIModel.h"
 
-@interface DemoAPIModel : JRTAPIModel
+@interface DemoAPIModel : JRTAPIModel <JRTAPIModelConfigurationDelegate>
 
 @end

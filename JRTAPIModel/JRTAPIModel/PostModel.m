@@ -16,28 +16,28 @@
 
 - (void)GETpostsSuccess:(JRTObjectBlok)success
                 failure:(JRTErrorBlock)failure {
-    [self getJsonPath:@"posts"
-               params:@{}
-              success:^(id data) {
+    [self getJsonForPath:@"posts"
+                  params:@{}
+                 success:^(id data) {
         NSError *error;
         NSArray *result = [PostModel arrayOfModelsFromDictionaries:data error:&error];
         success(result);
     }
-              failure:^(NSError *error) {
+                 failure:^(NSError *error) {
         failure(error);
     }];
 }
 
 - (void)GETpostOneSuccess:(JRTObjectBlok)success
                   failure:(JRTErrorBlock)failure {
-    [self getJsonPath:@"posts/1"
-               params:@{}
-              success:^(id data) {
+    [self getJsonForPath:@"posts/1"
+                  params:@{}
+                 success:^(id data) {
         NSError *error;
         PostModel *result = [[PostModel alloc] initWithDictionary:data error:&error];
         success(result);
     }
-              failure:^(NSError *error) {
+                 failure:^(NSError *error) {
         failure(error);
     }];
 }

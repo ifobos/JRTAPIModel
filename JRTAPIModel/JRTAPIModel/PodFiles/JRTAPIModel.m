@@ -33,30 +33,14 @@
 
 #pragma mark - Configuration
 
-- (NSString *)API_URL {
-    @throw  [[NSException alloc] initWithName:[NSString stringWithFormat:@"%@", self.class]
-                                       reason:[NSString stringWithFormat:@"%@, It should be implemented in sub-class. ", NSStringFromSelector(_cmd)]
-                                     userInfo:nil];
-    return nil;
-}
 
-- (void)headerWithSuccess:(void (^)(NSArray *headers))successHeader
-                  failure:(void (^)(NSError *error))failure {
-    @throw  [[NSException alloc] initWithName:[NSString stringWithFormat:@"%@", self.class]
-                                       reason:[NSString stringWithFormat:@"%@, It should be implemented in sub-class. ", NSStringFromSelector(_cmd)]
-                                     userInfo:nil];
-}
-
-- (void)catchFailureOperation:(NSURLSessionTask *)operation
-                        error:(NSError *)error
-                  requestType:(JRTRequestType)requestType
-                         path:(NSString *)path
-                       params:(NSDictionary *)params
-                      success:(JRTObjectBlok)success
-                      failure:(JRTErrorBlock)failure {
-    @throw  [[NSException alloc] initWithName:[NSString stringWithFormat:@"%@", self.class]
-                                       reason:[NSString stringWithFormat:@"%@, It should be implemented in sub-class. ", NSStringFromSelector(_cmd)]
-                                     userInfo:nil];
+- (id<JRTAPIModelConfigurationDelegate>)configurationDelegate {
+    if (!_configurationDelegate) {
+        @throw  [[NSException alloc] initWithName:[NSString stringWithFormat:@"%@", self.class]
+                                           reason:[NSString stringWithFormat:@"%@, It should not be empty. ", NSStringFromSelector(_cmd)]
+                                         userInfo:nil];
+    }
+    return _configurationDelegate;
 }
 
 #pragma mark - Reachability
@@ -123,61 +107,61 @@
                      forHTTPHeaderField:[header objectForKey:@"key"]];
         }
     }
-    self.manager.requestSerializer  = requestSerializer;
+    self.manager.requestSerializer = requestSerializer;
     self.manager.responseSerializer = responseSerializer;
 }
 
 #pragma mark - Request
 
-- (void)executeRequestType:(JRTRequestType)requestType
+- (void)executeRequestType:(JRTAPIModelRequestType)requestType
                   withPath:(NSString *)path
                     params:(NSDictionary *)params
                    success:(JRTObjectBlok)success
                    failure:(JRTErrorBlock)failure {
     switch (requestType) {
-        case JRTRequestTypeGet:
+        case JRTAPIModelRequestTypeGet:
             [self getPath:path
                    params:params
                   success:success
                   failure:failure];
             break;
-        case JRTRequestTypeGetJson:
-            [self getJsonPath:path
-                       params:params
-                      success:success
-                      failure:failure];
+        case JRTAPIModelRequestTypeGetJson:
+            [self getJsonForPath:path
+                          params:params
+                         success:success
+                         failure:failure];
             break;
-        case JRTRequestTypePost:
+        case JRTAPIModelRequestTypePost:
             [self postPath:path
                     params:params
                    success:success
                    failure:failure];
             break;
-        case JRTRequestTypePostJson:
+        case JRTAPIModelRequestTypePostJson:
             [self postJsonForPath:path
                            params:params
                           success:success
                           failure:failure];
             break;
-        case JRTRequestTypePut:
+        case JRTAPIModelRequestTypePut:
             [self putPath:path
                    params:params
                   success:success
                   failure:failure];
             break;
-        case JRTRequestTypePutJson:
+        case JRTAPIModelRequestTypePutJson:
             [self putJsonForPath:path
                           params:params
                          success:success
                          failure:failure];
             break;
-        case JRTRequestTypeDelete:
+        case JRTAPIModelRequestTypeDelete:
             [self deletePath:path
                       params:params
                      success:success
                      failure:failure];
             break;
-        case JRTRequestTypeDeleteJson:
+        case JRTAPIModelRequestTypeDeleteJson:
             [self deleteJsonPath:path
                           params:params
                          success:success
@@ -194,64 +178,26 @@
          params:(NSDictionary *)params
         success:(JRTObjectBlok)success
         failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        [self setHeaderParameters:headers
-             forRequestSerializer:self.manager.requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        NSString *encodedPath = [self urlencode:path];
-        [self.manager GET:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-               parameters:params
-                 progress:^(NSProgress *_Nonnull downloadProgress) {
-        }
-                  success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            success(responseObject);
-        }
-                  failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypeGet
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+    [self performRequestType:JRTAPIModelRequestTypeGet
+           requestSerializer:[AFHTTPRequestSerializer serializer]
+          responseSerializer:[AFHTTPResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
-- (void)getJsonPath:(NSString *)path
-             params:(NSDictionary *)params
-            success:(JRTObjectBlok)success
-            failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        [self setHeaderParameters:headers
-             forRequestSerializer:self.manager.requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        NSString *encodedPath = [self urlencode:path];
-        [self.manager GET:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-               parameters:params
-                 progress:^(NSProgress *_Nonnull downloadProgress) {
-        }
-                  success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            [self JSONSerializationWithData:responseObject
-                                    success:success
-                                    failure:failure];
-        }
-                  failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypeGetJson
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+- (void)getJsonForPath:(NSString *)path
+                params:(NSDictionary *)params
+               success:(JRTObjectBlok)success
+               failure:(JRTErrorBlock)failure {
+    [self performRequestType:JRTAPIModelRequestTypeGetJson
+           requestSerializer:[AFJSONRequestSerializer serializer]
+          responseSerializer:[AFJSONResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
 #pragma mark - POST
@@ -260,66 +206,26 @@
           params:(NSDictionary *)params
          success:(JRTObjectBlok)success
          failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        NSString *encodedPath = [self urlencode:path];
-        [self setHeaderParameters:headers
-             forRequestSerializer:self.manager.requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        [self.manager POST:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-                parameters:params
-                  progress:^(NSProgress *_Nonnull uploadProgress) {
-        }
-                   success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            success(responseObject);
-        }
-                   failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypePost
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+    [self performRequestType:JRTAPIModelRequestTypePost
+           requestSerializer:[AFHTTPRequestSerializer serializer]
+          responseSerializer:[AFHTTPResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
 - (void)postJsonForPath:(NSString *)path
                  params:(NSDictionary *)params
                 success:(JRTObjectBlok)success
                 failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        NSString *encodedPath = [self urlencode:path];
-        AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-        [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [self setHeaderParameters:headers
-             forRequestSerializer:requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        [self.manager POST:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-                parameters:params
-                  progress:^(NSProgress *_Nonnull uploadProgress) {
-        }
-                   success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            [self JSONSerializationWithData:responseObject
-                                    success:success
-                                    failure:failure];
-        }
-                   failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypePostJson
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+    [self performRequestType:JRTAPIModelRequestTypePostJson
+           requestSerializer:[AFJSONRequestSerializer serializer]
+          responseSerializer:[AFJSONResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
 #pragma mark - PUT
@@ -328,63 +234,26 @@
          params:(NSDictionary *)params
         success:(JRTObjectBlok)success
         failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        NSString *encodedPath = [self urlencode:path];
-        [self setHeaderParameters:headers
-             forRequestSerializer:self.manager.requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        [self.manager PUT:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-               parameters:params
-                  success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            success(responseObject);
-        }
-                  failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypePut
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+    [self performRequestType:JRTAPIModelRequestTypePut
+           requestSerializer:[AFHTTPRequestSerializer serializer]
+          responseSerializer:[AFHTTPResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
 - (void)putJsonForPath:(NSString *)path
                 params:(NSDictionary *)params
                success:(JRTObjectBlok)success
                failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        NSString *encodedPath = [self urlencode:path];
-        AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-        [requestSerializer setValue:@"application/json"
-                 forHTTPHeaderField:@"Content-Type"];
-        [self setHeaderParameters:headers
-             forRequestSerializer:requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        [self.manager PUT:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-               parameters:params
-                  success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            [self JSONSerializationWithData:responseObject
-                                    success:success
-                                    failure:failure];
-        }
-                  failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypePutJson
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+    [self performRequestType:JRTAPIModelRequestTypePutJson
+           requestSerializer:[AFJSONRequestSerializer serializer]
+          responseSerializer:[AFJSONResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
 #pragma mark - DELETE
@@ -393,58 +262,95 @@
             params:(NSDictionary *)params
            success:(JRTObjectBlok)success
            failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
-        NSString *encodedPath = [self urlencode:path];
-        [self setHeaderParameters:headers
-             forRequestSerializer:self.manager.requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        [self.manager DELETE:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-                  parameters:params
-                     success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            success(responseObject);
-        }
-                     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypeDelete
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
-    }
-                    failure:^(NSError *error) {
-        failure(error);
-    }];
+    [self performRequestType:JRTAPIModelRequestTypeDelete
+           requestSerializer:[AFHTTPRequestSerializer serializer]
+          responseSerializer:[AFHTTPResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
 }
 
 - (void)deleteJsonPath:(NSString *)path
                 params:(NSDictionary *)params
                success:(JRTObjectBlok)success
                failure:(JRTErrorBlock)failure {
-    [self headerWithSuccess:^(NSArray *headers) {
+    [self performRequestType:JRTAPIModelRequestTypeDeleteJson
+           requestSerializer:[AFJSONRequestSerializer serializer]
+          responseSerializer:[AFJSONResponseSerializer serializer]
+                        path:path
+                      params:params
+                     success:success
+                     failure:failure];
+}
+
+#pragma mark - Request
+
+- (void)performRequestType:(JRTAPIModelRequestType)requestType
+         requestSerializer:(AFHTTPRequestSerializer *)requestSerializer
+        responseSerializer:(AFHTTPResponseSerializer *)responseSerializer
+                      path:(NSString *)path
+                    params:(NSDictionary *)params
+                   success:(JRTObjectBlok)success
+                   failure:(JRTErrorBlock)failure {
+    [self.configurationDelegate headerWithSuccess:^(NSArray *headers) {
         NSString *encodedPath = [self urlencode:path];
         [self setHeaderParameters:headers
-             forRequestSerializer:self.manager.requestSerializer
-            andResponseSerializer:[AFHTTPResponseSerializer serializer]];
-        [self.manager DELETE:[NSString stringWithFormat:@"%@/%@", self.API_URL, encodedPath]
-                  parameters:params
-                     success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-            [self JSONSerializationWithData:responseObject
-                                    success:success
-                                    failure:failure];
+             forRequestSerializer:requestSerializer
+            andResponseSerializer:responseSerializer];
+            
+        NSString *url = [NSString stringWithFormat:@"%@/%@", [self.configurationDelegate API_URL], encodedPath];
+        
+        void (^requestSuccess) (NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) = ^void (NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
+            success(responseObject);
+        };
+        
+        void (^requestFailure) (NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) = ^void (NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+            [self.configurationDelegate catchFailureOperation:task
+                                                        error:error
+                                                  requestType:requestType
+                                                         path:path
+                                                       params:params
+                                                      success:success
+                                                      failure:failure];
+        };
+        
+        switch (requestType) {
+            case JRTAPIModelRequestTypeGet:
+            case JRTAPIModelRequestTypeGetJson:
+                [self.manager GET:url
+                       parameters:params
+                         progress:nil
+                          success:requestSuccess
+                          failure:requestFailure];
+                break;
+            case JRTAPIModelRequestTypePost:
+            case JRTAPIModelRequestTypePostJson:
+                [self.manager POST:url
+                        parameters:params
+                          progress:nil
+                           success:requestSuccess
+                           failure:requestFailure];
+                break;
+            case JRTAPIModelRequestTypePut:
+            case JRTAPIModelRequestTypePutJson:
+                [self.manager PUT:url
+                       parameters:params
+                          success:requestSuccess
+                          failure:requestFailure];
+                break;
+            case JRTAPIModelRequestTypeDelete:
+            case JRTAPIModelRequestTypeDeleteJson:
+                [self.manager DELETE:url
+                          parameters:params
+                             success:requestSuccess
+                             failure:requestFailure];
+                break;
+            default:
+                break;
         }
-                     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-            [self catchFailureOperation:task
-                                  error:error
-                            requestType:JRTRequestTypeDeleteJson
-                                   path:path
-                                 params:params
-                                success:success
-                                failure:failure];
-        }];
     }
-                    failure:^(NSError *error) {
+                                          failure:^(NSError *error) {
         failure(error);
     }];
 }
@@ -454,18 +360,6 @@
 - (NSString *)urlencode:(NSString *)url {
     NSString *encodedUrl = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     return encodedUrl;
-}
-
-- (void)JSONSerializationWithData:(id)responseObject
-                          success:(JRTObjectBlok)success
-                          failure:(JRTErrorBlock)failure {
-    NSError *error;
-    id result = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
-    if (!result) {
-        failure(error);
-    } else {
-        success(result);
-    }
 }
 
 @end
