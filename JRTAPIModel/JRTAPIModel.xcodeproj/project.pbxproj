@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13E2618BC9EE07A8B47ECAC0 /* libPods-JRTAPIModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 653AB93941EE48F57C73FA53 /* libPods-JRTAPIModel.a */; };
 		310893951C4EF078005546F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893941C4EF078005546F7 /* main.m */; };
 		310893981C4EF078005546F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893971C4EF078005546F7 /* AppDelegate.m */; };
 		3108939A1C4EF078005546F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 310893991C4EF078005546F7 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		310893AC1C4EF538005546F7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 310893AA1C4EF538005546F7 /* ViewController.xib */; };
 		310893AF1C4EF607005546F7 /* DemoAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893AE1C4EF607005546F7 /* DemoAPIModel.m */; };
 		310893B21C4EF9EE005546F7 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 310893B11C4EF9EE005546F7 /* PostModel.m */; };
-		ED40A8E7E5E514E5D6F91E8C /* libPods-JRTAPIModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62CC36520732BFCDF337F8AD /* libPods-JRTAPIModel.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +36,9 @@
 		310893AE1C4EF607005546F7 /* DemoAPIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAPIModel.m; sourceTree = "<group>"; };
 		310893B01C4EF9EE005546F7 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
 		310893B11C4EF9EE005546F7 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
-		62CC36520732BFCDF337F8AD /* libPods-JRTAPIModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JRTAPIModel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9935A8A47EAE1A677BE64F97 /* Pods-JRTAPIModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTAPIModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel.release.xcconfig"; sourceTree = "<group>"; };
-		ECBE9FEEDFDEA2743EBB4362 /* Pods-JRTAPIModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTAPIModel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel.debug.xcconfig"; sourceTree = "<group>"; };
+		653AB93941EE48F57C73FA53 /* libPods-JRTAPIModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JRTAPIModel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5AD521F9D8099F2660724AD /* Pods-JRTAPIModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTAPIModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel.release.xcconfig"; sourceTree = "<group>"; };
+		CC221A3BE46D83039405CC14 /* Pods-JRTAPIModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTAPIModel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,28 +46,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED40A8E7E5E514E5D6F91E8C /* libPods-JRTAPIModel.a in Frameworks */,
+				13E2618BC9EE07A8B47ECAC0 /* libPods-JRTAPIModel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DDFD0AC6EF1BDA65FF08A52 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				62CC36520732BFCDF337F8AD /* libPods-JRTAPIModel.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		310893871C4EF078005546F7 = {
 			isa = PBXGroup;
 			children = (
-				2DDFD0AC6EF1BDA65FF08A52 /* Frameworks */,
 				310893921C4EF078005546F7 /* JRTAPIModel */,
-				C270878A7213523A8DB26924 /* Pods */,
 				310893911C4EF078005546F7 /* Products */,
+				831F64CD30AB642EC6FDEB8A /* Pods */,
+				3284A024B760F699D8BF9A30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,11 +109,19 @@
 			path = PodFiles;
 			sourceTree = "<group>";
 		};
-		C270878A7213523A8DB26924 /* Pods */ = {
+		3284A024B760F699D8BF9A30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECBE9FEEDFDEA2743EBB4362 /* Pods-JRTAPIModel.debug.xcconfig */,
-				9935A8A47EAE1A677BE64F97 /* Pods-JRTAPIModel.release.xcconfig */,
+				653AB93941EE48F57C73FA53 /* libPods-JRTAPIModel.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		831F64CD30AB642EC6FDEB8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC221A3BE46D83039405CC14 /* Pods-JRTAPIModel.debug.xcconfig */,
+				C5AD521F9D8099F2660724AD /* Pods-JRTAPIModel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -133,12 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 310893A11C4EF078005546F7 /* Build configuration list for PBXNativeTarget "JRTAPIModel" */;
 			buildPhases = (
-				DEA4837A72E23374B2073E2F /* Check Pods Manifest.lock */,
+				FF739667F66C9B37CF0CCE92 /* [CP] Check Pods Manifest.lock */,
 				3108938C1C4EF078005546F7 /* Sources */,
 				3108938D1C4EF078005546F7 /* Frameworks */,
 				3108938E1C4EF078005546F7 /* Resources */,
-				9396978EA7321879241EC0BD /* Embed Pods Frameworks */,
-				7F6226DC6B101B816C7ED35B /* Copy Pods Resources */,
+				7B6419F8AFE3E12F5DD8A513 /* [CP] Embed Pods Frameworks */,
+				0C662B1F7C39423A35226637 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,14 +195,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7F6226DC6B101B816C7ED35B /* Copy Pods Resources */ = {
+		0C662B1F7C39423A35226637 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,14 +210,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9396978EA7321879241EC0BD /* Embed Pods Frameworks */ = {
+		7B6419F8AFE3E12F5DD8A513 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +225,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JRTAPIModel/Pods-JRTAPIModel-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DEA4837A72E23374B2073E2F /* Check Pods Manifest.lock */ = {
+		FF739667F66C9B37CF0CCE92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,7 +355,7 @@
 		};
 		310893A21C4EF078005546F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECBE9FEEDFDEA2743EBB4362 /* Pods-JRTAPIModel.debug.xcconfig */;
+			baseConfigurationReference = CC221A3BE46D83039405CC14 /* Pods-JRTAPIModel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -368,7 +368,7 @@
 		};
 		310893A31C4EF078005546F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9935A8A47EAE1A677BE64F97 /* Pods-JRTAPIModel.release.xcconfig */;
+			baseConfigurationReference = C5AD521F9D8099F2660724AD /* Pods-JRTAPIModel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;

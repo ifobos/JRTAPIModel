@@ -18,9 +18,9 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //THE SOFTWARE.
 
-#import "JSONModel/JSONModel.h"
-#import "AFNetworking/AFHTTPSessionManager.h"
-//#import "AFHTTPSessionManager.h"
+#import <JSONModel/JSONModel.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
+
 
 #pragma mark - typedef
 
