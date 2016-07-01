@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ifobos/JRTAPIModel.git", :tag => "0.0.5" }
   s.source_files = "JRTAPIModel/JRTAPIModel/PodFiles/*.{h,m}"
   s.requires_arc = true
-  s.dependency 'JSONModel'
-  s.dependency 'AFNetworking'
+  s.dependency 'JSONModel', '~> 1.2.0'
+  s.dependency 'AFNetworking', '~> 3.1.0'
 end
