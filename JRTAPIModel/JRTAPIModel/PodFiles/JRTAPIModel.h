@@ -19,7 +19,8 @@
 //THE SOFTWARE.
 
 #import "JSONModel/JSONModel.h"
-#import "AFHTTPSessionManager.h"
+#import "AFNetworking/AFHTTPSessionManager.h"
+//#import "AFHTTPSessionManager.h"
 
 #pragma mark - typedef
 
