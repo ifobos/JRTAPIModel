@@ -142,6 +142,7 @@ typedef NS_ENUM (NSInteger, JRTAPIModelRequestType) {
  */
 - (void)catchFailureOperation:(NSURLSessionTask *)operation
                         error:(NSError *)error
+                     userInfo:(id)userInfo
                   requestType:(JRTAPIModelRequestType)requestType
                          path:(NSString *)path
                        params:(NSDictionary *)params

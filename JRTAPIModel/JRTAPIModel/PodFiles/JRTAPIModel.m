@@ -306,8 +306,19 @@
         };
         
         void (^requestFailure) (NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) = ^void (NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+            
+            id userInfo = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+            if (userInfo) {
+                NSError* error;
+                NSDictionary* errorDictionary = [NSJSONSerialization JSONObjectWithData:userInfo options:kNilOptions error:&error];
+                if (errorDictionary) {
+                    userInfo = errorDictionary;
+                }
+            }
+            
             [self.configurationDelegate catchFailureOperation:task
                                                         error:error
+                                                     userInfo:userInfo
                                                   requestType:requestType
                                                          path:path
                                                        params:params
